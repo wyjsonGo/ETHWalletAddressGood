@@ -67,11 +67,11 @@
 
 		    //获取钱包的私钥
 		    var privateKey = wallet.privateKey;
-		    console.log("钱包私钥：",privateKey.substring(2)) // 去掉开头的0x
+		    console.log(`钱包私钥：${privateKey.substring(2)}`) // 去掉开头的0x
 
 		    //获取助记词
 		    var mnemonic = wallet.mnemonic;
-		    console.log("钱包助记词：",mnemonic.phrase)
+		    console.log(`钱包助记词：${mnemonic.phrase}`)
 		    console.log("-------------------------------------------------------------------")
     	}
     }
