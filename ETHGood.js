@@ -55,7 +55,7 @@
         }
         if (a58585858.exec(address.substring(2)) != null) {
             isLog = true;
-            console.log("正则(^a58585858)")
+            console.log("正则(^58585858)")
         }
 
         // if (a0x0.exec(address) != null) {
