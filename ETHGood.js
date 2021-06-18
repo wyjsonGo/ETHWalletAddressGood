@@ -11,7 +11,7 @@
 
     // var a0x0 = new RegExp("^0x0","g");// 开头不能是0x0
 
-    var AAAAAA = new RegExp("([\\d])\\1{5,}","g");// 111111或aaaaaa
+    var aaaaaa = new RegExp("([\\d])\\1{5,}","g");// 111111或aaaaaa
     var dead = new RegExp("^dead","gi");// 以dead开头
 
     var AAAA1 = new RegExp("^([\\w])\\1{3,}","gi");// 前4位相同
@@ -26,7 +26,7 @@
 
         var isOpen = false;
 
-        if (AAAAAA.exec(address) != null) {
+        if (aaaaaa.exec(address) != null) {
         	isOpen = true;
 		    console.log("正则(aaaaaa)")
         }
