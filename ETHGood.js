@@ -12,12 +12,13 @@
     // var a0x0 = new RegExp("^0x0","g");// 开头不能是0x0
 
     var aaaaaa = new RegExp("([\\d])\\1{5,}","g");// 111111或aaaaaa
-    var dead = new RegExp("^dead","g");// 以dead开头
+    var dead0000 = new RegExp("^dead0000","g");// 以dead0000开头
 
     var AAAA1 = new RegExp("^([\\w])\\1{3,}","gi");// 前4位相同
     var AAAAA2 = new RegExp("([\\w])\\1{4,}$","gi");// 后5位相同
 
     var a80808080 = new RegExp("^80808080","g");// 以80808080开头
+    var a90909090 = new RegExp("^90909090","g");// 以90909090开头
     var a58585858 = new RegExp("^58585858","g");// 以58585858开头
 
     for(;;){
@@ -33,9 +34,9 @@
         	isLog = true;
 		    console.log("正则(aaaaaa)")
         }
-        if (dead.exec(address.substring(2)) != null) {
+        if (dead0000.exec(address.substring(2)) != null) {
         	isLog = true;
-		    console.log("正则(^dead)")
+		    console.log("正则(^dead0000)")
         }
         if (AAAA1.exec(address.substring(2)) != null && AAAAA2.exec(address.substring(2)) != null) {
         	isLog = true;
@@ -52,6 +53,10 @@
         if (a80808080.exec(address.substring(2)) != null) {
             isLog = true;
             console.log("正则(^80808080)")
+        }
+        if (a90909090.exec(address.substring(2)) != null) {
+            isLog = true;
+            console.log("正则(^90909090)")
         }
         if (a58585858.exec(address.substring(2)) != null) {
             isLog = true;
