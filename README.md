@@ -1,5 +1,5 @@
 # ETHWalletAddressGood
-离线生成以太坊钱包地址靓号(Generate an Ethereum wallet good account number offline)
+离线生成以太坊钱包靓号地址(Generate an Ethereum wallet good account number offline)
 
 ## 使用步骤
 1.homebrew 安装 node js
