@@ -27,42 +27,42 @@
         //获取钱包地址
         var address = wallet.address;
 
-        var isOpen = false;
+        var isLog = false;
 
         if (aaaaaa.exec(address) != null) {
-        	isOpen = true;
+        	isLog = true;
 		    console.log("正则(aaaaaa)")
         }
         if (dead.exec(address.substring(2)) != null) {
-        	isOpen = true;
+        	isLog = true;
 		    console.log("正则(^dead)")
         }
         if (AAAA1.exec(address.substring(2)) != null && AAAAA2.exec(address.substring(2)) != null) {
-        	isOpen = true;
+        	isLog = true;
 		    console.log("正则(AAAA+AAAAA$)")
         }
         if (AAAA1.exec(address.substring(2)) != null) {
-        	isOpen = true;
+        	isLog = true;
 		    console.log("正则(^AAAA)")
         }
         if (AAAAA2.exec(address.substring(2)) != null) {
-            isOpen = true;
+            isLog = true;
             console.log("正则(AAAAA$)")
         }
         if (a80808080.exec(address.substring(2)) != null) {
-            isOpen = true;
+            isLog = true;
             console.log("正则(^80808080)")
         }
         if (a58585858.exec(address.substring(2)) != null) {
-            isOpen = true;
+            isLog = true;
             console.log("正则(^a58585858)")
         }
 
         // if (a0x0.exec(address) != null) {
-        // 	isOpen = false;
+        // 	isLog = false;
         // }
 
-    	if (isOpen) {
+    	if (isLog) {
 		    console.log(`钱包地址：${address} |【${address.substring(address.length-5)}】`) // 提取后5位高亮
 
 		    //获取钱包的私钥
