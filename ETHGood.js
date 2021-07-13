@@ -11,15 +11,19 @@
 
     // var a0x0 = new RegExp("^0x0","g");// 开头不能是0x0
 
-    var aaaaaa = new RegExp("([\\d])\\1{5,}","g");// 111111或aaaaaa
+    // var aaaaaa = new RegExp("([\\d])\\1{5,}","g");// 111111或aaaaaa
     var dead0000 = new RegExp("^dead0000","g");// 以dead0000开头
 
     var AAAA1 = new RegExp("^([\\w])\\1{3,}","gi");// 前4位相同
     var AAAAA2 = new RegExp("([\\w])\\1{4,}$","gi");// 后5位相同
 
-    var a80808080 = new RegExp("^80808080","g");// 以80808080开头
-    var a90909090 = new RegExp("^90909090","g");// 以90909090开头
-    var a58585858 = new RegExp("^58585858","g");// 以58585858开头
+    // var a80808080 = new RegExp("^80808080","g");// 以80808080开头
+    // var a90909090 = new RegExp("^90909090","g");// 以90909090开头
+    // var a58585858 = new RegExp("^58585858","g");// 以58585858开头
+
+    var AAAAAA1 = new RegExp("^([\\w])\\1{5,}","gi");// 前6位相同
+
+
 
     for(;;){
         //拿到生成的钱包信息
@@ -30,10 +34,10 @@
 
         var isLog = false;
 
-        if (aaaaaa.exec(address) != null) {
-        	isLog = true;
-		    console.log("正则(aaaaaa)")
-        }
+      //   if (aaaaaa.exec(address) != null) {
+      //   	isLog = true;
+		    // console.log("正则(aaaaaa)")
+      //   }
         if (dead0000.exec(address.substring(2)) != null) {
         	isLog = true;
 		    console.log("正则(^dead0000)")
@@ -42,26 +46,32 @@
         	isLog = true;
 		    console.log("正则(AAAA+AAAAA$)")
         }
-        if (AAAA1.exec(address.substring(2)) != null) {
-        	isLog = true;
-		    console.log("正则(^AAAA)")
-        }
-        if (AAAAA2.exec(address.substring(2)) != null) {
+        // if (AAAA1.exec(address.substring(2)) != null) {
+        //     isLog = true;
+        //     console.log("正则(^AAAA)")
+        // }
+        // if (AAAAA2.exec(address.substring(2)) != null) {
+        //     isLog = true;
+        //     console.log("正则(AAAAA$)")
+        // }
+
+        if (AAAAAA1.exec(address.substring(2)) != null) {
             isLog = true;
-            console.log("正则(AAAAA$)")
+            console.log("正则(^AAAAAA)")
         }
-        if (a80808080.exec(address.substring(2)) != null) {
-            isLog = true;
-            console.log("正则(^80808080)")
-        }
-        if (a90909090.exec(address.substring(2)) != null) {
-            isLog = true;
-            console.log("正则(^90909090)")
-        }
-        if (a58585858.exec(address.substring(2)) != null) {
-            isLog = true;
-            console.log("正则(^58585858)")
-        }
+
+        // if (a80808080.exec(address.substring(2)) != null) {
+        //     isLog = true;
+        //     console.log("正则(^80808080)")
+        // }
+        // if (a90909090.exec(address.substring(2)) != null) {
+        //     isLog = true;
+        //     console.log("正则(^90909090)")
+        // }
+        // if (a58585858.exec(address.substring(2)) != null) {
+        //     isLog = true;
+        //     console.log("正则(^58585858)")
+        // }
 
         // if (a0x0.exec(address) != null) {
         // 	isLog = false;
