@@ -15,7 +15,7 @@ npm install -save ethers
 3.运行ETHGood.js
 
 ```bash
-node ETHAG.js
+node ETHWAG.js
 ```
 
 ## 效果图
