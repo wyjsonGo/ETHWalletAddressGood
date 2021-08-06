@@ -3,4 +3,4 @@
 /build
 .idea
 ETHSteal.js
-launchETHSteal.sh
+*.sh
