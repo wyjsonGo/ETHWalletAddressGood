@@ -5,7 +5,7 @@
  * 离线生成以太坊钱包靓号地址(Generate an Ethereum wallet good account number offline)
  */
 //引入ethers.js
-var  ethers = require('ethers');
+var ethers = require('ethers');
 
 //靓号正则
 var AAAAAA1 = new RegExp("^([\\w])\\1{5,}","g");// 前6位相同
