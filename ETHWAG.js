@@ -6,6 +6,7 @@
  */
 //引入ethers.js
 var ethers = require('ethers');
+console.log('ethers.version:'+ethers.version);
 
 //靓号正则
 // var a0x0 = new RegExp("^0x0","g");// 开头不能是0x0
