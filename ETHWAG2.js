@@ -6,6 +6,7 @@
  */
 //引入ethers.js
 var ethers = require('ethers');
+console.log('ethers.version:'+ethers.version);
 
 //靓号正则
 var AAAAAA1 = new RegExp("^([\\w])\\1{5,}","g");// 前6位相同
