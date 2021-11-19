@@ -11,7 +11,7 @@ console.log('ethers.version:'+ethers.version);
 //靓号正则
 // var a0x0 = new RegExp("^0x0","g");// 开头不能是0x0
 
-var aaaaaa = new RegExp("([\\d])\\1{5,}","g");// 111111或aaaaaa
+var aaaaaa = new RegExp("([\\d])\\1{5,}","g");// 111111或222222
 var dead0000 = new RegExp("^dead0000","g");// 以dead0000开头
 
 var AAAA1 = new RegExp("^([\\w])\\1{3,}","gi");// 前4位相同
