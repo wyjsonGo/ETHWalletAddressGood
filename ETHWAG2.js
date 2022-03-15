@@ -5,11 +5,11 @@
  * 离线生成以太坊钱包靓号地址(Generate an Ethereum wallet good account number offline)
  */
 //引入ethers.js
-var ethers = require('ethers');
+const ethers = require('ethers');
 console.log('ethers.version:'+ethers.version);
 
 //靓号正则
-var AAAAAA1 = new RegExp("^([\\w])\\1{5,}","g");// 前6位相同
+const AAAAAA1 = new RegExp("^([\\w])\\1{5,}","g");// 前6位相同
 
 for(;;){
     //拿到生成的钱包信息
