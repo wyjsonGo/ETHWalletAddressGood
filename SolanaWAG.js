@@ -17,7 +17,7 @@ const sw_ = new RegExp("^([\\w])\\1{5,}","g");// 前6位相同
 
 const solana = new RegExp("^Solana","g");// 以Solana开头
 const sol = new RegExp("^Sol","g");// 以Sol开头
-const sol_ = new RegExp("^SOL","g");// 以Sol开头
+const sol_ = new RegExp("^SOL","g");// 以SOL开头
 
 for(;;){
     var mnemonic = bip39.generateMnemonic();
