@@ -25,8 +25,9 @@ for(;;){
     var mnemonic = bip39.generateMnemonic();
     var seed = bip39.mnemonicToSeedSync(mnemonic);
     var derivedSeed = ed25519.derivePath(derivePath, seed.toString('hex')).key;
-    var privateKey = bs58.encode(nacl.sign.keyPair.fromSeed(derivedSeed).secretKey);
-    var address = bs58.encode(nacl.sign.keyPair.fromSeed(derivedSeed).publicKey);
+    var signSeed = nacl.sign.keyPair.fromSeed(derivedSeed);
+    var privateKey = bs58.encode(signSeed.secretKey);
+    var address = bs58.encode(signSeed.publicKey);
 
     var isLog = false;
 
