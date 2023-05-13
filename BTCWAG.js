@@ -15,7 +15,7 @@ const network = bitcoin.networks.bitcoin;
 //靓号正则
 const w4 = new RegExp("^([\\w])\\1{3,}","g");// 前4位相同
 
-// const aabb = new RegExp("^(.)\\1(.)\\2","g");// AABB
+const aabb = new RegExp("^(.)\\1(.)\\2","g");// AABB
 const abab = new RegExp("^(.)(.)\\1\\2","g");// ABAB
 
 const BTC = new RegExp("^Bitcoin","gi");// 以BTC开头
@@ -31,48 +31,55 @@ for(;;){
     var p2pkh = bitcoin.payments.p2pkh({ pubkey: path.publicKey, network : network });
     var address = p2pkh.address;
 
-    
+    // Nested SegWit (P2SH)格式 3LoE438ufVn99qgaX5Gwvi22iAgKBzF9Hd
     var swPath = bip32.fromSeed(seed).derivePath("m/49'/0'/0'/0/0");// sw 隔离见证
     var privateKey3 = swPath.toWIF();
-
-    // Native SegWit (Bech32)格式 bc1qwyuzkw5k3u90cq7sgj2nmj6f7ya0u7wxswhent
-    var bc1 = bitcoin.payments.p2wpkh({ pubkey: swPath.publicKey, network : network });
-    var address3bc1 = bc1.address;
-
-    // Nested SegWit (P2SH)格式 3LoE438ufVn99qgaX5Gwvi22iAgKBzF9Hd
-    var p2wpkh = bitcoin.payments.p2sh({ redeem: bc1 })
+    var p2wpkh = bitcoin.payments.p2sh({ redeem: bitcoin.payments.p2wpkh({ pubkey: swPath.publicKey, network : network }) })
     var address3 = p2wpkh.address;
 
-    
+    // Native SegWit (Bech32)格式 bc1qjmfmsaj2mvgd7n46qrms6avlu0ku4qgrns9x7w
+    var bech32Path = bip32.fromSeed(seed).derivePath("m/84'/0'/0'/0/0");// sw 隔离见证
+    var privateKey3bc1q = bech32Path.toWIF();   
+    var bc1q = bitcoin.payments.p2wpkh({ pubkey: bech32Path.publicKey, network : network });
+    var address3bc1q = bc1q.address;
+
+    // Taproot (P2TR)格式 bc1ptyurxq9h7v4p6va48pd4nhu5lup9ttszhpnn3fggg59dup6j9n9srk3030
+    // ...
+
 
     var isLog = false;
 
-    if (w4.exec(address3bc1.substring(4)) != null) {
+    if (w4.exec(address3.substring(1)) != null) {
         isLog = true;
         console.log("正则(^w4)")
     }
 
-    if (abab.exec(address3bc1.substring(4)) != null) {
+    if (aabb.exec(address3.substring(1)) != null) {
+        isLog = true;
+        console.log("正则(^AABB)")
+    }
+
+    if (abab.exec(address3.substring(1)) != null) {
         isLog = true;
         console.log("正则(^ABAB)")
     }
 
-    if (BTC.exec(address3bc1.substring(4)) != null) {
+    if (BTC.exec(address3.substring(1)) != null) {
         isLog = true;
         console.log("正则(^BTC)")
     }
-
-	if (isLog) {
-        console.log(`钱包地址Legacy-1： ${address}`);
-        console.log(`钱包私钥Legacy-1： ${privateKey}`);
-        console.log(`钱包地址SegWit-3： ${address3}`);
-        console.log(`钱包私钥SegWit-3： ${privateKey3}`);
-        console.log(`钱包地址SegWit-3-bc1： ${address3bc1}`);
-        console.log(`钱包助记词： ${mnemonic}`)
+    
+    if (isLog) {
+        console.log(`地址Legacy (P2PKH)： ${address}`);
+        console.log(`私钥Legacy (P2PKH)： ${privateKey}`);
+        console.log(`地址Nested SegWit (P2SH)： ${address3}`);
+        console.log(`私钥Nested SegWit (P2SH)： ${privateKey3}`);
+        console.log(`地址Native SegWit (Bech32)： ${address3bc1q}`);
+        console.log(`私钥Native SegWit (Bech32)： ${privateKey3bc1q}`);
+        console.log(`助记词： ${mnemonic}`)
         console.log("-------------------------------------------------------------------")
-	}
+    }
 }
-
 
 
 
