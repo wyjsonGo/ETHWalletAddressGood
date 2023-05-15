@@ -18,8 +18,8 @@ bitcoin.initEccLib(ecc);
 //靓号正则
 const w4 = new RegExp("^([\\w])\\1{3,}","g");// 前4位相同
 
-const aabb = new RegExp("^(.)\\1(.)\\2","g");// AABB
-const abab = new RegExp("^(.)(.)\\1\\2","g");// ABAB
+// const aabb = new RegExp("^(.)\\1(.)\\2","g");// AABB
+// const abab = new RegExp("^(.)(.)\\1\\2","g");// ABAB
 
 const BTC = new RegExp("^Bitcoin","gi");// 以BTC开头
 
@@ -42,13 +42,13 @@ for(;;){
 
     // Native SegWit (Bech32)格式 bc1qjmfmsaj2mvgd7n46qrms6avlu0ku4qgrns9x7w
     var bech32Path = bip32.fromSeed(seed).derivePath("m/84'/0'/0'/0/0");
-    var privateKey3bc1q = bech32Path.toWIF();   
+    var privateKey3bc1q = bech32Path.toWIF();
     var bc1q = bitcoin.payments.p2wpkh({ pubkey: bech32Path.publicKey, network : network });
     var address3bc1q = bc1q.address;
 
     // Taproot (P2TR)格式 bc1ptyurxq9h7v4p6va48pd4nhu5lup9ttszhpnn3fggg59dup6j9n9srk3030
     var bech32mPath = bip32.fromSeed(seed).derivePath("m/86'/0'/0'/0/0");
-    var privateKey3bc1p = bech32mPath.toWIF();   
+    var privateKey3bc1p = bech32mPath.toWIF();
     var bc1p = bitcoin.payments.p2tr({ internalPubkey: bech32mPath.publicKey.slice(1, 33), network : network });
     var address3bc1p = bc1p.address;
 
@@ -59,15 +59,15 @@ for(;;){
         console.log("正则(^w4)")
     }
 
-    if (aabb.exec(address3bc1p.substring(4)) != null) {
-        isLog = true;
-        console.log("正则(^AABB)")
-    }
+    // if (aabb.exec(address3bc1p.substring(4)) != null) {
+    //     isLog = true;
+    //     console.log("正则(^AABB)")
+    // }
 
-    if (abab.exec(address3bc1p.substring(4)) != null) {
-        isLog = true;
-        console.log("正则(^ABAB)")
-    }
+    // if (abab.exec(address3bc1p.substring(4)) != null) {
+    //     isLog = true;
+    //     console.log("正则(^ABAB)")
+    // }
 
     if (BTC.exec(address3bc1p.substring(4)) != null) {
         isLog = true;
