@@ -22,14 +22,14 @@ const aabb = new RegExp("^(.)\\1(.)\\2","g");// AABB
 const abab = new RegExp("^(.)(.)\\1\\2","g");// ABAB
 
 for(;;){
-    var mnemonic = bip39.generateMnemonic();
-    var seed = bip39.mnemonicToSeedSync(mnemonic);
-    var derivedSeed = ed25519.derivePath(derivePath, seed.toString('hex')).key;
-    var signSeed = nacl.sign.keyPair.fromSeed(derivedSeed);
-    var privateKey = bs58.encode(signSeed.secretKey);
-    var address = bs58.encode(signSeed.publicKey);
+    let mnemonic = bip39.generateMnemonic();
+    let seed = bip39.mnemonicToSeedSync(mnemonic);
+    let derivedSeed = ed25519.derivePath(derivePath, seed.toString('hex')).key;
+    let signSeed = nacl.sign.keyPair.fromSeed(derivedSeed);
+    let privateKey = bs58.encode(signSeed.secretKey);
+    let address = bs58.encode(signSeed.publicKey);
 
-    var isLog = false;
+    let isLog = false;
 
     if (sw_.exec(address) != null) {
         isLog = true;
@@ -57,9 +57,9 @@ for(;;){
     }
 
     if (isLog) {
-        console.log(`钱包地址： ${address}`);
-        console.log(`钱包私钥： ${privateKey}`);
-        console.log(`钱包助记词： ${mnemonic}`);
+        console.log(`钱包地址: ${address}`);
+        console.log(`钱包私钥: ${privateKey}`);
+        console.log(`钱包助记词: ${mnemonic}`);
         console.log("-------------------------------------------------------------------");
     }
 }

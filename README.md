@@ -10,7 +10,7 @@ brew install node
 2.npm安装ethers依赖库
 
 ```bash
-npm install -save ethers
+npm install ethers@5.6.0
 ```
 3.运行ETHGood.js
 
