@@ -10,7 +10,7 @@ const ethers = require('ethers');
 console.log('ethers.version:'+ethers.version);
 
 //靓号正则
-const AAAAAA1 = new RegExp("^([\\w])\\1{2,}","g");// 前6位相同
+const AAAAAA1 = new RegExp("^([\\w])\\1{6,}","g");// 前7位相同
 
 for(;;){
     //拿到生成的钱包信息
