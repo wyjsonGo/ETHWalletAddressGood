@@ -23,6 +23,8 @@ const aabb = new RegExp("^(.)\\1(.)\\2(.)\\3","g");// AABBCC
 const mBitcoin = new RegExp("^Bitcoin","gi");// 以Bitcoin开头
 const mBTC = new RegExp("^BTC","gi");// 以BTC开头
 
+const abcArray = ['b','d','f','g','h','i','j','k','l','p','q','t','y','1','2','3','4','5','6','7','8','9','0'];
+
 for(;;){
     // let mnemonic = "love slogan menu thunder liquid pave economy subject deposit organ trick loyal";
     let mnemonic = bip39.generateMnemonic();
@@ -72,6 +74,18 @@ for(;;){
     if (mBTC.exec(address3bc1p.substring(4)) != null) {
         isLog = true;
         console.log("正则(^BTC)")
+    }
+
+    var isExist = false;
+    for (var i = 0; i < abcArray.length; i++) {
+        if(address3bc1p.substring(4).indexOf(abcArray[i]) !== -1){
+            isExist = true;
+            break;
+        }
+    }
+    if (!isExist) {
+        isLog = true;
+        console.log("全是不露头的字母")
     }
 
     if (isLog) {
