@@ -16,12 +16,12 @@ const ecc = require('tiny-secp256k1');
 bitcoin.initEccLib(ecc);
 
 //靓号正则
-const w4 = new RegExp("^([\\w])\\1{3,}","g");// 前4位相同
+const w4 = new RegExp("^([\\w])\\1{4,}","g");// 前5位相同
 
-// const aabb = new RegExp("^(.)\\1(.)\\2","g");// AABB
-// const abab = new RegExp("^(.)(.)\\1\\2","g");// ABAB
+const aabb = new RegExp("^(.)\\1(.)\\2(.)\\3","g");// AABBCC
 
-const BTC = new RegExp("^Bitcoin","gi");// 以BTC开头
+const mBitcoin = new RegExp("^Bitcoin","gi");// 以Bitcoin开头
+const mBTC = new RegExp("^BTC","gi");// 以BTC开头
 
 for(;;){
     // let mnemonic = "love slogan menu thunder liquid pave economy subject deposit organ trick loyal";
@@ -59,30 +59,30 @@ for(;;){
         console.log("正则(^w4)")
     }
 
-    // if (aabb.exec(address3bc1p.substring(4)) != null) {
-    //     isLog = true;
-    //     console.log("正则(^AABB)")
-    // }
+     if (aabb.exec(address3bc1p.substring(4)) != null) {
+         isLog = true;
+         console.log("正则(^AABB)")
+     }
 
-    // if (abab.exec(address3bc1p.substring(4)) != null) {
-    //     isLog = true;
-    //     console.log("正则(^ABAB)")
-    // }
+    if (mBitcoin.exec(address3bc1p.substring(4)) != null) {
+        isLog = true;
+        console.log("正则(^Bitcoin)")
+    }
 
-    if (BTC.exec(address3bc1p.substring(4)) != null) {
+    if (mBTC.exec(address3bc1p.substring(4)) != null) {
         isLog = true;
         console.log("正则(^BTC)")
     }
-    
+
     if (isLog) {
-        console.log(`地址Legacy (P2PKH): ${address}`);
-        console.log(`私钥Legacy (P2PKH): ${privateKey}`);
-        console.log(`地址Nested SegWit (P2SH): ${address3}`);
-        console.log(`私钥Nested SegWit (P2SH): ${privateKey3}`);
-        console.log(`地址Native SegWit (Bech32): ${address3bc1q}`);
-        console.log(`私钥Native SegWit (Bech32): ${privateKey3bc1q}`);
+//        console.log(`地址Legacy (P2PKH): ${address}`);
+//        console.log(`私钥Legacy (P2PKH): ${privateKey}`);
+//        console.log(`地址Nested SegWit (P2SH): ${address3}`);
+//        console.log(`私钥Nested SegWit (P2SH): ${privateKey3}`);
+//        console.log(`地址Native SegWit (Bech32): ${address3bc1q}`);
+//        console.log(`私钥Native SegWit (Bech32): ${privateKey3bc1q}`);
         console.log(`地址Taproot (P2TR): ${address3bc1p}`);
-        console.log(`私钥Taproot (P2TR): ${privateKey3bc1p}`);
+//        console.log(`私钥Taproot (P2TR): ${privateKey3bc1p}`);
         console.log(`助记词: ${mnemonic}`)
         console.log("-------------------------------------------------------------------")
     }

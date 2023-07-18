@@ -4,6 +4,8 @@
  * @date 2023-03-16 15:47:53
  * 离线生成Solana钱包靓号地址(Generate an Solana wallet good account number offline)
  * 1. npm install ed25519-hd-key
+ * 2. npm install tweetnacl
+ * 3. npm install bip39@3.0.4
  */
 const bs58 = require("bs58");
 const bip39 = require('bip39');
