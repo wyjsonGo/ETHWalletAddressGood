@@ -22,6 +22,7 @@ const aabb = new RegExp("^(.)\\1(.)\\2","g");// AABB
 
 const mBitcoin = new RegExp("^Bitcoin","gi");// 以Bitcoin开头
 const mBTC = new RegExp("^BTC","gi");// 以BTC开头
+const mAddress = new RegExp("^address","gi");// 以address开头
 
 for(;;){
     // let mnemonic = "love slogan menu thunder liquid pave economy subject deposit organ trick loyal";
@@ -59,10 +60,15 @@ for(;;){
         console.log("正则(^w4)")
     }
 
-     if (aabb.exec(address3bc1p.substring(4)) != null) {
-         isLog = true;
-         console.log("正则(^AABB)")
-     }
+    if (aabb.exec(address3bc1p.substring(4)) != null) {
+        isLog = true;
+        console.log("正则(^AABB)")
+    }
+
+    if (mAddress.exec(address3bc1p.substring(4)) != null) {
+        isLog = true;
+        console.log("正则(^Address)")
+    }
 
     if (mBitcoin.exec(address3bc1p.substring(4)) != null) {
         isLog = true;
