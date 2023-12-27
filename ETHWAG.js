@@ -41,14 +41,6 @@ for(;;){
     	isLog = true;
         console.log("正则(^dead0000)")
     }
-    if (AAAA1.exec(address.substring(2)) != null) {
-        isLog = true;
-        console.log("正则(^AAAA)")
-    }
-    if (AAAAA2.exec(address.substring(2)) != null) {
-        isLog = true;
-        console.log("正则(AAAAA$)")
-    }
     if (AAAA1.exec(address.substring(2)) != null && AAAAA2.exec(address.substring(2)) != null) {
     	isLog = true;
         console.log("正则(AAAA+AAAAA$)")
