@@ -11,6 +11,7 @@ console.log('ethers.version:'+ethers.version);
 
 //靓号正则
 const AAAAAA1 = new RegExp("^([\\w])\\1{6,}","g");// 前7位相同
+const AAAAAA2 = new RegExp("([\\w])\\1{6,}$","g");// 后7位相同
 
 for(;;){
     //拿到生成的钱包信息
@@ -24,6 +25,11 @@ for(;;){
     if (AAAAAA1.exec(address.substring(2)) != null) {
         isLog = true;
         console.log("正则(^AAAAAA)")
+    }
+
+    if (AAAAAA2.exec(address) != null) {
+        isLog = true;
+        console.log("正则(AAAAAA$)")
     }
 
 	if (isLog) {
