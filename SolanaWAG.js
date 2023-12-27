@@ -18,8 +18,7 @@ const derivePath = "m/44'/501'/0'/0'";
 const sw_ = new RegExp("^([\\w])\\1{5,}","g");// 前6位相同
 
 const solana = new RegExp("^Solana","gi");// 以Solana开头
-const sol = new RegExp("^Sol","gi");// 以Sol开头
-const sol_ = new RegExp("^SOL","gi");// 以SOL开头
+const sol = new RegExp("^SOL","gi");// 以SOL开头
 const aabb = new RegExp("^(.)\\1(.)\\2","g");// AABB
 const abab = new RegExp("^(.)(.)\\1\\2","g");// ABAB
 
@@ -44,10 +43,6 @@ for(;;){
     if (sol.exec(address) != null) {
         isLog = true;
         console.log("正则(^Sol)")
-    }
-    if (sol_.exec(address) != null) {
-        isLog = true;
-        console.log("正则(^SOL)")
     }
     if (aabb.exec(address) != null) {
         isLog = true;
