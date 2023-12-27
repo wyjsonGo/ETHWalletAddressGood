@@ -16,7 +16,8 @@ const ecc = require('tiny-secp256k1');
 bitcoin.initEccLib(ecc);
 
 //靓号正则
-const w4 = new RegExp("^([\\w])\\1{4,}","g");// 前5位相同
+const _w4 = new RegExp("^([\\w])\\1{3,}","g");// 前4位相同
+const w4_ = new RegExp("([\\w])\\1{3,}$","g");// 前4位相同
 
 const aabb = new RegExp("^(.)\\1(.)\\2","g");// AABB
 
@@ -55,9 +56,14 @@ for(;;){
 
     let isLog = false;
 
-    if (w4.exec(address3bc1p.substring(4)) != null) {
+    if (_w4.exec(address3bc1p.substring(4)) != null) {
         isLog = true;
         console.log("正则(^w4)")
+    }
+
+    if (w4_.exec(address3bc1p.substring(4)) != null) {
+        isLog = true;
+        console.log("正则(w4$)")
     }
 
     if (aabb.exec(address3bc1p.substring(4)) != null) {
